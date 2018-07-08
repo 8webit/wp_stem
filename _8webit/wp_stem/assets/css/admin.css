@@ -1,0 +1,299 @@
+.select2{
+  width: 100%;
+}
+.ui-autocomplete{
+  max-height: 150px;
+  overflow: scroll;
+}
+/* Helpers */
+.hide {
+  display: none !important;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.button.button-sortable{
+  text-decoration: none;
+}
+
+.button-sortable:hover {
+  cursor: move;
+}
+
+.block{
+    display: block;
+}
+
+/* Meta box fields*/
+
+.meta-box-field {
+  margin-bottom: 10px;
+}
+
+.meta-box-field:last-child::after {
+  display: none;
+}
+
+.meta-box-field input[type=color] {
+  border: 0;
+  padding: 0;
+}
+
+.meta-box-field input {
+  vertical-align: middle;
+}
+
+.meta-box-field textarea {
+  vertical-align: top;
+}
+
+.wp_stem-media-uploader img {
+  max-width: 50%;
+}
+
+
+/* Cloneable Box*/
+
+.box {
+  border: 1px solid #E5E5E5;
+  background-color: #F1F1F1;
+}
+
+.box .toggle-cloneable {
+  float: right;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.box .title {
+  font-size: 1.1em;
+  margin: 0;
+  padding-top: 10px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.box .cloneable-group>.box {
+  margin-bottom: 10px;
+  background-color: #FFF;
+}
+
+.box .cloneable-group>.box>.inside {
+  border-top: 1px solid #E6E6E6;
+  background-color: #fff;
+}
+
+.box .cloneable-group>.box .meta-field-action {
+  border-top: 1px dashed #BDBDBD;
+  padding-top: 10px;
+  height: 30px;
+}
+
+.box .cloneable-group>.box .meta-field-action .button-remove-clone {
+  float: right;
+  position: initial;
+}
+
+
+/* Field Group */
+
+.field-group {
+  padding: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.cloneable .field-group {
+  background-color: white;
+  border: 1px solid #d2d2d2;
+}
+
+
+/* Field Wrapper*/
+
+.field-wrapper {
+  display: inline-block;
+}
+
+.field-wrapper .custom-img-container img {
+  max-width: 100%;
+}
+
+
+/* Metabox Field Actions */
+
+.cloneable>.meta-field-action {
+  border-top: 1px dashed #bdbdbd;
+  padding-top: 10px;
+}
+
+.meta-field-action a span {
+  vertical-align: middle;
+}
+
+.button.button-danger {
+  background-color: #f44336;
+  color: white;
+  border: none;
+}
+
+.button.button-danger:hover,
+.button.button-danger:active {
+  background-color: #f44336;
+  color: white;
+}
+
+@media screen and (min-width: 783px) {
+  .button.button-sortable {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .field-group .dashicons {
+    vertical-align: middle;
+  }
+  .cloneable .field-group .label-wrapper:first-child {
+    margin-left: 40px;
+  }
+  .field-wrapper {
+    width: 50%;
+  }
+  .label-wrapper {
+    vertical-align: middle;
+    display: inline-block;
+    width: 30%;
+  }
+  .meta-box-field input[type=text],
+  .meta-box-field textarea {
+    width: 100%;
+  }
+  .button.button-remove-clone {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 783px) {
+  .field-wrapper {
+    margin-bottom: 20px;
+  }
+  .label-wrapper {
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+  }
+
+  .meta-box-field input[type=text],
+  .meta-box-field textarea {
+    width: 100%;
+  }
+  .field-group{
+    position: relative;
+  }
+  .meta-field-action .button-remove-clone{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+
+  .button.button-sortable{
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    margin: 0;    
+    padding: 8px;
+    border-radius: 3px;
+    background-color: #f9f9f9;    
+    border: 1px solid #dbdbdb;
+  }
+
+  .cloneable>.field-group {
+    padding-bottom: 50px;
+  }
+  .cloneable>.field-group:last-child {
+    padding-bottom: 23px;
+  }
+  .cloneable>.field-group>.meta-field-action {
+    margin-top: 11px;
+    float: right;
+  }
+  .cloneable-group .box{
+    position: relative;
+  }
+}
+
+
+/*
+* Popup
+*/
+.wp_stem-popup{
+  width: auto;
+  border: 1px solid #999;
+  position: absolute;
+  top: -40px;
+  background-color: white;
+  border-radius: 2px;
+  padding:10px;
+  box-shadow: 3px 5px 5px -3px;
+  z-index: 1;
+  display: none;
+}
+.wp_stem-popup-hint{
+  color: #bcbcbc;
+}
+.wp_stem-popup-header{
+  margin-top: 0;
+}
+
+.wp_stem-popup-close{
+  color: #f44336;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 1.8em;
+}
+
+.wp_stem-popup-close:hover {
+  cursor: pointer;
+}
+
+.wp_stem-popup-content{
+  padding-bottom:50px;
+}
+.wp_stem-popup-content .error{
+  background-color: #f44336;
+  color: #fff;
+}
+.wp_stem-popup-content > .button.button-primary{
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+/*
+* Google Fonts
+*/
+.wp_stem-google-fonts-family{
+  width: 264px;
+  display: block;
+  margin-bottom:10px;
+}
+.wp_stem-google-fonts-subsets,
+.wp_stem-google-fonts-variants{
+  display: inline-block;
+  min-width: 100px;
+  margin-right:10px;
+}
+
+
+.wp_stem-google-fonts-size{
+  width: 60px;
+  float: right;
+}
+

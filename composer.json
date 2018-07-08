@@ -1,0 +1,23 @@
+{
+  "name": "8webit/wp_stem",
+  "type": "library",
+  "description": "lightweight package for wordpress theme/plugin developer",
+  "require": {
+    "php": "^7.0"
+  },
+  "keywords": ["wordpress", "metabox", "post-type", "cloneable-field", "wp-media"],
+  "homepage": "https://8webit.com/wp_stem",
+  "license": "GPL-3.0-or-later",
+  "authors": [
+    {
+      "name": "Tornike Gabisonia",
+      "email": "tornike.gabisonia@gmail.com",
+      "homepage": "http://8webit.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "_8webit\\wp_stem\\": "_8webit/wp_stem"
+    }
+  }
+}
