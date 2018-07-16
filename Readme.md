@@ -1,23 +1,24 @@
 # Content
-
 * [Summary](#summary)
-* [How to use](#how-to-use)
+* [Install](#install)
+* [Setup](#setup)
 * [PosType Class](#posttype-class)
-  * [create post type](#posttype::create($post_type_slug,-$options))
+  * [create post type](#posttypecreatepost_type_slug-options)
   * [create meta box](#posttypemeta_boxoption)
-  * [add fields to post type](#postypefieldfield)
+  * [add fields to post type](#posttypefieldfield)
     * [single cloneable field](#add-single-cloneable-field)
-    * [group cloneable field](#postypecloneable_groupgroup)
+    * [group cloneable field](#posttypecloneable_groupgroup)
     * [add field to already created post type](#posttypeaddarg)
     * [auto complete field by slug](#autocomplete-field-by-slug)
-* [Enqueue_Script Class](#enqueuescript-class)
-  * [enqueue scripts or styles for user pages](#enqueuescriptenqueuefilename-src---in_footer--false-deps--array-ver--false)
-  * [enqueue scripts or styles for admin pages](#enqueuescriptadmin_enqueuefilename-src---in_footer--false-deps--array-ver--false)
-    * [enqueue to specific admin page](#enqueuescriptadmin_specificwp_screen_ids--array)
-  * [enqueue with pattern](#enqueuescripturipattern)
+* [Enqueue_Script Class](#enqueue-script-class)
+  * [enqueue scripts or styles for user pages](#enqueue_scriptenqueuefilename-src---in_footer--false-deps--array-ver--false)
+  * [enqueue scripts or styles for admin pages](#enqueue_scriptadmin_enqueuefilename-src---in_footer--false-deps--array-ver--false)
+    * [enqueue to specific admin page](#enqueue_scriptadmin_specificwp_screen_ids--array)
+  * [enqueue with pattern](#enqueue_scripturipattern)
 * [Meta Class](#meta-class)
   * [create,delete,update post type meta value](#metasyncpost_id-meta_key-new_value---old_value--)
-  * [get meta value](#metagetmeta_key-post_id-multiplytrue)
+    * [get meta value](#metagetmeta_key-post_id-multiplytrue)
+
 
 ## Summary
 
@@ -28,8 +29,13 @@ With this package you can:
 * create post type or add fields to it
 * modify post type meta
 
-## How to use
-add to functions.php file
+## Install
+```
+composer require 8webit/wp_stem
+```
+
+## Setup
+functions.php file
 
 ``` php
 use _8webit\wp_stem\Stem;
@@ -64,12 +70,12 @@ __Function Chaining Order Is VITAL__
 
 Example of creating meta box
 
-    Postype::create('your_post_type_slug)->meta_box(array(//minimal paramters
+    PostType::create('your_post_type_slug)->meta_box(array(//minimal paramters
         'id'        => 'your_id',   //required
         'title'    => 'your_title' // required
     ));
 
-### Postype::field($field)
+### PostType::field($field)
 
 * $field
   * id (*int*) (optional) - auto generated id will be field_name_id
@@ -81,7 +87,7 @@ Example of creating meta box
   * **Any HTML Attribute**
 
 adds field to post type.function chaining is important here.
-must used after Postype::add() or Postype::create() function.see example below.
+must used after PostType::add() or PostType::create() function.see example below.
 
 __Function Chaining Order Is VITAL__
 
@@ -106,13 +112,13 @@ finally add field
 
 ## Add Single Cloneable Field
 
-to add single cloneable field use [Postype::field()](#postype-field-$field-) and pass 'cloneable' => true ,as shown in example
+to add single cloneable field use [PostType::field()](#postype-field-$field-) and pass 'cloneable' => true ,as shown in example
 
-### Postype::cloneable_group($group)
+### PostType::cloneable_group($group)
 
 * $group (array)
   * group_id (int)(__required__) - __id of the field group.used for retrieve field meta values__
-  * fields (array)(__required__) - same arguments as [Postype::field()](#postype-field-$field-)
+  * fields (array)(__required__) - same arguments as [PostType::field()](#postype-field-$field-)
   * options (array)(_optional_)
     * title (string)  - title of the cloneable meta box
     * add_button (string) - add (clone) button label
@@ -164,7 +170,7 @@ What to autocomplete happens based on html class,so if you want to field was aut
 
 Example of users autocomplition
 
-     Postype->field(array(
+     PostType->field(array(
             'name'  => 'author_search',
             'label' => 'Select Author',
             'type'  => 'text',
@@ -303,12 +309,6 @@ $uri = Enqueue_Script::uri('acme_vendor_script/lorem_ipsum/*.bundle.js');
 echo '<script type="text/javascript" src="'. $uri .'"></script>';
 ```
 
-
-***
-
-wp_stem 1.0.0
-
-***
 Copyright (C) 2018  [8webit.com](https://8webit.com)
 
 This program is free software: you can redistribute it and/or modify
