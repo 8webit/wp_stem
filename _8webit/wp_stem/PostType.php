@@ -1,5 +1,7 @@
 <?php
 namespace _8webit\wp_stem;
+use _8webit\wp_stem\Renderer\Meta_Box;
+
 /**
  * Class PostType
  *
@@ -76,12 +78,12 @@ class PostType
                 }
 
                 if(isset($option['meta_boxes'])) {
-                    Meta_Box_Renderer::render($option['meta_boxes'], $post_id, $post_type);
+                    Meta_Box::render($option['meta_boxes'], $post_type);
                 }
             }
         }
 
-        $meta_boxes = Meta_Box_Renderer::get_meta_boxes();
+        $meta_boxes = Meta_Box::get_meta_boxes();
 
         if (!empty($meta_boxes)) {
             foreach ($meta_boxes as $value) {
@@ -104,12 +106,12 @@ class PostType
      * created post type,post id, or page template
      *
      * @param $arg string | int  post type,post id or page template
-     * @return PostType
+     * @return Instance
      */
     public static function add($arg){
         self::set_state_post_type($arg);
 
-        return PostType::get_instance();
+        return self::get_instance();
     }
 
     /**
@@ -118,7 +120,7 @@ class PostType
      * @param string $post_type_slug
      * @param array $options  same values as register_post_type() $args parameter.
      * @param bool $extend_defaults
-     * @return PostType
+     * @return Instance
      */
     public static function create($post_type_slug, $options = array(), $extend_defaults = true) {
         $ucfirst_post_type = ucfirst($post_type_slug);
@@ -163,7 +165,7 @@ class PostType
      * @link https://developer.wordpress.org/reference/functions/add_meta_box/
      *
      * @param array $options contains same parameters as add_meta_box
-     * @return PostType
+     * @return Instance|PostType
      */
     public static function meta_box($options = array()) {
         $post_type = self::get_state_post_type();
@@ -178,7 +180,7 @@ class PostType
      * adds field to post type in meta box
      *
      * @param array $field
-     * @return PostType
+     * @return Instance|PostType
      * @internal param array $fields
      * @internal param string $post_id
      * @internal param string $post_type
@@ -220,7 +222,7 @@ class PostType
      * adds cloneable field group to meta box
      *
      * @param array $group
-     * @return PostType
+     * @return Instance|PostType
      * @internal param array $fields
      */
     public static function cloneable_group($group = array()) { 
@@ -252,7 +254,7 @@ class PostType
      * sets taxonomy for given Post Type
      *
      * @param $options_arr
-     * @return PostType
+     * @return Instance|PostType
      */
     public static function taxonomy($options_arr) {
         $post_type = self::get_state_post_type();
@@ -264,11 +266,11 @@ class PostType
 
     /**
      * adding support for post type
-     * default supports are : titile,editor,thumbnail
+     * default supports are : title, editor, thumbnail
      *
      * @param array $options
      * @param bool $extend_defaults
-     * @return PostType
+     * @return Instance|PostType
      */
     public static function supports($options = array(), $extend_defaults = true) {
         $post_type = self::get_state_post_type();
@@ -321,14 +323,6 @@ class PostType
 
     public static function set_support($key, $value) {
         self::$options[$key]['supports'] = $value;
-    }
-
-    private static function get_state(){
-        return self::$state;
-    }
-
-    private static function set_state($state=array()){
-        self::$state = $state;
     }
 
     private static function set_state_post_type($post_type){

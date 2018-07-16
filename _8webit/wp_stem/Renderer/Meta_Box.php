@@ -66,10 +66,9 @@ class Meta_Box {
      * @see Meta_Box::$meta_boxes
      *
      * @param $meta_boxes
-     * @param $post_id
      * @param $post_type
      */
-    public static function render($meta_boxes, $post_id, $post_type){
+    public static function render($meta_boxes, $post_type){
         $default_callback = array(self::get_instance(), 'meta_box_display_callback');
 
         foreach($meta_boxes as $meta_box) {
