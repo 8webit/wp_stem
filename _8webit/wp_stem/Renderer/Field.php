@@ -19,8 +19,8 @@ class Field{
      * @return string HTML
      */
     public static function render_field($field){
-        if(isset($field['type'])) {
-            return;
+        if(!isset($field['type'])) {
+            return false;
         }
 
         $field = Sanitize::array($field);

@@ -5,6 +5,8 @@ class Meta{
     /**
      * create new,update or delete meta value with post id
      *
+     * @since 1.0.0
+     *
      * @param $post_id integer
      * @param $meta_key string
      * @param string $new_value string
@@ -25,18 +27,27 @@ class Meta{
     }
 
     /**
+     * since 1.0.1 html is automatically escaped.
+     *
      * get post meta without pass post id.
      * if $post_id not passed get_the_ID() function will be used to retrieve current id
+     *
+     * @since 1.0.0
      *
      * @param $key
      * @param string $post_id
      * @param bool $multiply
      * @return mixed
      */
-    public static function get($key,$post_id='',$multiply=true){
+    public static function get($key ,$post_id='', $single = true){
         $post_id = !empty($post_id) ? $post_id : get_the_ID();
+        $result = get_post_meta($post_id, $key, $single);
 
-        return Sanitize::array(get_post_meta($post_id,$key,$multiply));
+        if($single){
+            return Sanitize::text($result);
+        }else{
+            return Sanitize::array($result);
+        }
     }
 
     

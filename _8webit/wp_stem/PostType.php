@@ -45,10 +45,9 @@ class PostType
      */
     function load_post_type() {
         $options = self::get_all_options();
-        
         foreach ($options as $post_type => $option) {
             unset($option['meta_boxes']);
-            
+
             if(!post_type_exists($post_type)){
                 register_post_type($post_type, $option);
             }

@@ -66,7 +66,7 @@ Example of creating post type
 * $options(_array_) - meta_box has same parameters as [add_meta_box()](https://developer.wordpress.org/reference/functions/add_meta_box/),but note that add_meta_box() 
 has *callback* required, but in wp_stem it **isn't**.
 
-__Function Chaining Order Is VITAL__
+__Note::__ Pay Attention To function chaining order.
 
 Example of creating meta box
 
@@ -89,10 +89,8 @@ Example of creating meta box
 adds field to post type.function chaining is important here.
 must used after PostType::add() or PostType::create() function.see example below.
 
-__Function Chaining Order Is VITAL__
 
-
-**Note: to add field to post type you *must* create *meta box* first.to create meta box use meta_box() function.**
+**Note:** to add field to post type you *must* create *meta box* first.to create meta box use meta_box() function.
 
 finally add field
 
@@ -196,11 +194,13 @@ example of updating value:
 
     Meta::sync(get_the_ID(), 'lorem_ipsum', $new_value, $old_value);
 
-### Meta::get($meta_key, $post_id='', $multiply=true)
+### Meta::get($meta_key, $post_id = '', $single = true)
 
 * $meta_key (*string*) (**required**)
-* $meta_key (*int*) (optional)
-* $meta_key (*int*) (optional)
+* $post_id (*int*) (optional)
+* $single (*int*) (optional)
+
+since 1.0.1 html is automatically escaped.
 
 get post meta without pass post id.if $post_id not passed get_the_ID()
 function will be used to retrieve current id

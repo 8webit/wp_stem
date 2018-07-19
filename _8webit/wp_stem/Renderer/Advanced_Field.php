@@ -81,6 +81,7 @@ class Advanced_Field extends Field
 	        	$html .= self::font($field);
 	        	break;
             default:
+                var_dump($field);
                 $html .= Field::render_field($field);
                 break;
         }
