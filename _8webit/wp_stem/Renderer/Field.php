@@ -1,6 +1,7 @@
 <?php
-
 namespace _8webit\wp_stem\Renderer;
+
+use _8webit\wp_stem\Sanitize;
 
 /**
  * Responsible For render fields
@@ -18,13 +19,21 @@ class Field{
      * @return string HTML
      */
     public static function render_field($field){
+        if(isset($field['type'])) {
+            return;
+        }
+
+        $field = Sanitize::array($field);
+
         $wrapper = isset($field['wrapper']) ? $field['wrapper'] : true;
         $wrapper_class = isset($field['wrapper_class']) ? $field['wrapper_class'] : 'field-wrapper';
 
-        if(isset($field['type']) && $field['type'] == 'textarea'){
-            return  self::textarea($field,$wrapper,$wrapper_class);
-        }else {
-            return self::input($field,$wrapper,$wrapper_class);
+        switch ($field['type']){
+            case 'textarea':
+                return self::textarea($field,$wrapper,$wrapper_class);
+                break;
+            default:
+                return self::input($field,$wrapper,$wrapper_class);
         }
     }
 

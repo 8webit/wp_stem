@@ -11,6 +11,8 @@ class Meta{
      * @param string $old_value string
      */
     public static function sync ($post_id,$meta_key,$new_value="",$old_value="") {
+        $new_value = Sanitize::text($new_value);
+
         if (!isset($old_value)) { 
             add_post_meta($post_id, $meta_key, $new_value);
         } else if (!empty($new_value) && $old_value != $new_value) {
@@ -34,7 +36,7 @@ class Meta{
     public static function get($key,$post_id='',$multiply=true){
         $post_id = !empty($post_id) ? $post_id : get_the_ID();
 
-        return get_post_meta($post_id,$key,$multiply);
+        return Sanitize::array(get_post_meta($post_id,$key,$multiply));
     }
 
     
